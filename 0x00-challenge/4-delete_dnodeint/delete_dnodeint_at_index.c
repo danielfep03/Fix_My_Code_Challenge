@@ -31,7 +31,6 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		*head = saved_head;
 		return (-1);
 	}
-	printf("Head en N %d\n", (*head)->n);
 	if (0 == index)
 	{
 		tmp = (*head)->next;
@@ -44,8 +43,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	}
 	else
 	{
-		tmp = (*head)->next;
-		(*head)->prev->next = tmp;
+		tmp = *head;
+		(*head)->prev->next = tmp->next;
 		if ((*head)->next)
 		{
 			(*head)->next->prev = (*head)->prev;
